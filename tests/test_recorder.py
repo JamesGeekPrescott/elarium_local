@@ -3,6 +3,10 @@ import os
 import pytest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+# --- MOCK sounddevice for CI environments ---
+if os.getenv("CI"):
+    sys.modules["sounddevice"] = mock.MagicMock()
+
 from recorder import record_audio
 
 def test_record_creates_audio_file():
