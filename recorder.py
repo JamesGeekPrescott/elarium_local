@@ -1,8 +1,16 @@
 # recorder.py
 
-import sounddevice as sd
-from scipy.io.wavfile import write
 import os
+
+if os.getenv("CI"):
+    import sys
+    from unittest import mock
+    sys.modules["sounddevice"] = mock.MagicMock()
+
+import sounddevice as sd
+import numpy as np
+import wave
+import time
 
 def record_audio(
     duration: int = 2,
