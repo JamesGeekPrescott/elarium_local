@@ -24,4 +24,4 @@ The function `transcribe(audio_path)`:
 
 #### Status: ✅ Working
 - Verified via pytest: `3/3 tests passing`
-- See [Behavior Contract](docs/transcribe_whisper_contract.md)
+- See [Behavior Contract](docs/transcribe_whisper_contract.md)"# trigger" 
