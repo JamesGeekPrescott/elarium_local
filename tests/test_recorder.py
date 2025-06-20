@@ -1,12 +1,13 @@
 import sys
 import os
 import pytest
-from unittest import mock  
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # --- MOCK sounddevice for CI environments ---
 if os.getenv("CI"):
+    from unittest import mock
     sys.modules["sounddevice"] = mock.MagicMock()
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from recorder import record_audio
 
