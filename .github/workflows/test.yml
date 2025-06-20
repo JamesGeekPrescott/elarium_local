@@ -27,4 +27,4 @@ jobs:
       - name: Run tests
         run: pytest
         env:
-        CI: true
+          CI: true  # ✅ makes os.getenv("CI") work inside Python
