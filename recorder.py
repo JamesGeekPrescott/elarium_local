@@ -20,13 +20,13 @@ def record_audio(
     """
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    # Lazy import for CI compatibility
+    # ✅ CI-friendly lazy import
     if os.getenv("CI"):
         import sys
         from unittest import mock
         sys.modules["sounddevice"] = mock.MagicMock()
 
-    import sounddevice as sd  # Moved here
+    import sounddevice as sd  # moved inside
 
     print(f"🎙️ Recording {duration}s to '{output_path}'...")
     audio = sd.rec(int(duration * samplerate), samplerate=samplerate, channels=channels, dtype='int16')
