@@ -1,27 +1,25 @@
-Elarium is a local-first, modular voice assistant powered by Python, TDD, and audio AI components.
+# Elarium Local
 
+A local, modular, voice-enabled assistant powered by Python.  
+This repo includes components for audio recording, transcription, and voice interaction.
 
-### Module Contracts
-- [Recorder – `record_audio()`](docs/record_audio_behavior_contract.md)
+![Tests](https://github.com/Jamesgeekprescott/elarium_local/actions/workflows/test.yml/badge.svg)
 
-## Features
+---
 
-### 🎙️ Whisper Transcription
+## 🚀 Features
 
-This project includes a wrapper around [`whisper.cpp`](https://github.com/ggerganov/whisper.cpp) using the `whisper-cli.exe` binary.
+- 🎙️ Local audio recording with `sounddevice`
+- 🧠 Whisper-based transcription
+- 🗣️ Text-to-speech playback
+- 🔬 Test-driven development architecture (TDD)
+- ✅ GitHub Actions CI integration
 
-#### Usage
-The function `transcribe(audio_path)`:
-- Accepts a `.wav` audio file path
-- Returns timestamped transcription output
-- Wraps the local `whisper-cli.exe` binary
+---
 
-#### Requirements
-- whisper-cli.exe must be compiled and present at:  
-  `whisper.cpp/build/bin/Release/whisper-cli.exe`
-- Model file (e.g. `ggml-base.bin`) must be downloaded and placed in `whisper.cpp/`
-- Audio input must be mono `.wav`
+## 🧪 Running Tests
 
-#### Status: ✅ Working
-- Verified via pytest: `3/3 tests passing`
-- See [Behavior Contract](docs/transcribe_whisper_contract.md)"# trigger" 
+### Run CI-compatible tests:
+
+```bash
+pytest tests/

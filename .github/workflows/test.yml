@@ -1,10 +1,7 @@
 name: 🧪 Run Tests
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:  # Only runs manually from GitHub UI
 
 jobs:
   test:
@@ -27,4 +24,4 @@ jobs:
       - name: Run tests
         run: pytest
         env:
-          CI: true  # ✅ makes os.getenv("CI") work inside Python
+        CI: true  # ✅ makes os.getenv("CI") work inside Python

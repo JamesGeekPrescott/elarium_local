@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import wave
+import sounddevice as sd
 
 def write(path, samplerate, audio):
     with wave.open(path, 'wb') as wf:
@@ -20,13 +21,7 @@ def record_audio(
     """
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    # ✅ CI-friendly lazy import
-    if os.getenv("CI"):
-        import sys
-        from unittest import mock
-        sys.modules["sounddevice"] = mock.MagicMock()
-
-    import sounddevice as sd  # moved inside
+    import sounddevice as sd  # Only imported when function is called
 
     print(f"🎙️ Recording {duration}s to '{output_path}'...")
     audio = sd.rec(int(duration * samplerate), samplerate=samplerate, channels=channels, dtype='int16')
